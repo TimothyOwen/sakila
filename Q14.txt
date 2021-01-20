@@ -1,0 +1,6 @@
+SELECT film.title, rental.rental_date, film.rental_duration, 
+	DATE_ADD(rental.rental_date, INTERVAL film.rental_duration DAY)
+	FROM film 
+		JOIN inventory ON film.film_id=inventory.film_id 
+		JOIN rental ON inventory.inventory_id=rental.inventory_id 
+			WHERE film.title='Academy Dinosaur' AND rental.return_date IS NULL;

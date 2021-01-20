@@ -56,7 +56,10 @@ SELECT count(\*), (SELECT first_name FROM actor WHERE actor.actor_id=film_actor.
 
 14.
 
-SELECT film.title, rental.return_date FROM film JOIN inventory ON film.film_id=inventory.film_id JOIN rental ON inventory.inventory_id=rental.inventory_id WHERE film.title='Academy Dinosaur';
+SELECT film.title, rental.rental_date, film.rental_duration, DATE_ADD(rental.rental_date, INTERVAL film.rental_duration DAY) 
+	FROM film JOIN inventory ON film.film_id=inventory.film_id 
+	JOIN rental ON inventory.inventory_id=rental.inventory_id 
+		WHERE film.title='Academy Dinosaur' AND rental.return_date IS NULL;
 
 15.
 
