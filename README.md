@@ -42,17 +42,17 @@ SELECT title FROM film WHERE special_features='Deleted Scenes';
 
 11.
 
-SELECT last_name, count(*) FROM actor GROUP BY last_name HAVING count(*)=1 ORDER BY last_name DESC;
+SELECT last_name, count(\*) FROM actor GROUP BY last_name HAVING count(\*)=1 ORDER BY last_name DESC;
 
 12.
 
-SELECT last_name, count(*) FROM actor GROUP BY last_name HAVING count(*)>1 ORDER BY count(*) DESC;
+SELECT last_name, count(\*) FROM actor GROUP BY last_name HAVING count(\*)>1 ORDER BY count(\*) DESC;
 
 13.
 
-SELECT count(*), (SELECT first_name FROM actor WHERE actor.actor_id=film_actor.actor_id) AS first,
+SELECT count(\*), (SELECT first_name FROM actor WHERE actor.actor_id=film_actor.actor_id) AS first,
 	(SELECT last_name FROM actor WHERE actor.actor_id=film_actor.actor_id) AS last 
-		FROM film_actor GROUP BY actor_id ORDER BY count(*) DESC;
+		FROM film_actor GROUP BY actor_id ORDER BY count(\*) DESC;
 
 14.
 
@@ -60,11 +60,11 @@ SELECT film.title, rental.return_date FROM film JOIN inventory ON film.film_id=i
 
 15.
 
-SELECT SUM(length)/COUNT(*) FROM film;
+SELECT SUM(length)/COUNT(\*) FROM film;
 
 16.
 
-SELECT category, SUM(length)/COUNT(*) AS average FROM film_list GROUP BY category;
+SELECT category, SUM(length)/COUNT(\*) AS average FROM film_list GROUP BY category;
 
 17.
 
@@ -90,7 +90,7 @@ SELECT title FROM film_list WHERE actors LIKE '%Fred Costner%';
 
 22.
 
-SELECT count(*) FROM (SELECT DISTINCT country FROM country) distinct_country;
+SELECT count(\*) FROM (SELECT DISTINCT country FROM country) distinct_country;
 
 23.
 
@@ -102,7 +102,7 @@ SELECT first_name, last_name FROM actor WHERE last_name LIKE '%son' ORDER BY fir
 
 25.
 
-SELECT category, COUNT(*) FROM 
+SELECT category, COUNT(\*) FROM 
 	film_list fl JOIN film_category fc ON fl.FID=fc.film_id 
-		GROUP BY category ORDER BY COUNT(*) DESC LIMIT 1;
+		GROUP BY category ORDER BY COUNT(\*) DESC LIMIT 1;
 
